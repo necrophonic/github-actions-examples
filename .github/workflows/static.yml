@@ -1,0 +1,21 @@
+name: static_check
+on: pull_request
+
+jobs:
+  checks:
+    name: StaticCheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: staticcheck
+        uses: grandcolline/golang-github-actions@v1.1.0
+        with:
+          run: staticcheck
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: linter
+        uses: grandcolline/golang-github-actions@v1.1.0
+        with:
+          run: lint
+          token: ${{ secrets.GITHUB_TOKEN }}
