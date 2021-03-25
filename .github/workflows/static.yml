@@ -19,3 +19,15 @@ jobs:
         with:
           run: lint
           token: ${{ secrets.GITHUB_TOKEN }}
+
+  # Example of using a separate step
+  errcheck:
+    name: Errcheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: check
+        uses: grandcolline/golang-github-actions@v1.1.0
+        with:
+          run: errcheck
+          token: ${{ secrets.GITHUB_TOKEN }}
